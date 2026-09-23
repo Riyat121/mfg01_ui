@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import usePageStyles from '../hooks/usePageStyles.js'
+import useTheme from '../hooks/useTheme.js'
+import ThemeToggle from '../components/ThemeToggle.jsx'
 import css from '../styles/kinetic.css?inline'
 import SectionHead from '../components/SectionHead.jsx'
 import Pricing from '../components/Pricing.jsx'
@@ -39,6 +41,7 @@ function Routing() {
 
 export default function Kinetic() {
   usePageStyles(css, 'mfg01 — Kinetic')
+  const [theme, toggleTheme] = useTheme('light')
 
   return (
     <>
@@ -46,7 +49,10 @@ export default function Kinetic() {
         <div className="navrow">
           <a className="brand" href="#"><span className="mark">m1</span>mfg01</a>
           <div className="navlinks"><a href="#features">Features</a><a href="#pricing">Pricing</a></div>
-          <a className="navcta" href="#">Sign in</a>
+          <div className="navright">
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <a className="navcta" href="#">Sign in</a>
+          </div>
         </div>
       </nav>
 

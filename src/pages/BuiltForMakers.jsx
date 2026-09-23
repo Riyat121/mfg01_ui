@@ -1,4 +1,6 @@
 import usePageStyles from '../hooks/usePageStyles.js'
+import useTheme from '../hooks/useTheme.js'
+import ThemeToggle from '../components/ThemeToggle.jsx'
 import css from '../styles/makers.css?inline'
 import SectionHead from '../components/SectionHead.jsx'
 import Pricing from '../components/Pricing.jsx'
@@ -29,6 +31,7 @@ const mockStats = [
 
 export default function BuiltForMakers() {
   usePageStyles(css, 'mfg01 — Built for Makers')
+  const [theme, toggleTheme] = useTheme('dark')
 
   return (
     <>
@@ -36,7 +39,10 @@ export default function BuiltForMakers() {
         <div className="navrow">
           <a className="brand" href="#">mfg01</a>
           <div className="navlinks"><a href="#features">Features</a><a href="#pricing">Pricing</a></div>
-          <a className="navcta" href="#">Sign In / Sign Up</a>
+          <div className="navright">
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <a className="navcta" href="#">Sign In / Sign Up</a>
+          </div>
         </div>
       </nav>
 

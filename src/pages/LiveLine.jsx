@@ -1,5 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import usePageStyles from '../hooks/usePageStyles.js'
+import useTheme from '../hooks/useTheme.js'
+import ThemeToggle from '../components/ThemeToggle.jsx'
 import css from '../styles/liveline.css?inline'
 import SectionHead from '../components/SectionHead.jsx'
 import Pricing from '../components/Pricing.jsx'
@@ -59,13 +61,7 @@ function Stat({ target, prefix = '', suffix = '', label }) {
 
 export default function LiveLine() {
   usePageStyles(css, 'mfg01 — LiveLine')
-  const [theme, setTheme] = useState('dark')
-
-  // The design's colours are keyed off <html data-theme>
-  useLayoutEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    return () => document.documentElement.removeAttribute('data-theme')
-  }, [theme])
+  const [theme, toggleTheme] = useTheme('dark')
 
   return (
     <>
@@ -74,13 +70,7 @@ export default function LiveLine() {
           <a className="brand" href="#"><span className="mark">m1</span>mfg01</a>
           <div className="navlinks"><a href="#features">Features</a><a href="#pricing">Pricing</a></div>
           <div className="navright">
-            <button
-              className="themebtn"
-              aria-label="Toggle theme"
-              onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
             <a className="navcta" href="#">Sign in</a>
           </div>
         </div>

@@ -13,6 +13,12 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--i
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:2.2rem}
 .brand .mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.75rem}
 .top h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+/* dark / light preview switch */
+.seg{display:inline-flex;margin-top:1.6rem;padding:.25rem;background:var(--panel);border:1px solid var(--line);border-radius:999px}
+.seg button{font:600 .88rem/1 inherit;font-family:inherit;border:0;background:transparent;color:var(--muted);padding:.6rem 1.2rem;border-radius:999px;cursor:pointer}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .top p{color:var(--muted);font-size:1.05rem;margin-top:.8rem;max-width:560px;line-height:1.6}
 
 /* option cards */
