@@ -1,0 +1,15 @@
+/* Floating design switcher shown on every design page.
+   Prefixed "ds-" so it never clashes with a design's own classes. */
+.ds-bar{position:fixed;left:1rem;bottom:1rem;z-index:1000;display:flex;align-items:center;gap:.25rem;
+  padding:.35rem;background:rgba(20,20,22,.88);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;font:600 .8rem/1 system-ui,-apple-system,'Segoe UI',sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.ds-bar a{color:#D6D5D0;text-decoration:none;padding:.55rem .9rem;border-radius:999px;white-space:nowrap}
+.ds-bar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.ds-bar a[aria-current="page"]{background:#fff;color:#141416}
+.ds-bar .ds-home{border-right:1px solid rgba(255,255,255,.14);border-radius:999px 0 0 999px;margin-right:.15rem}
+
+
+@media (max-width:680px){
+  .ds-bar{left:50%;transform:translateX(-50%);bottom:.75rem;max-width:calc(100vw - 1.5rem);overflow-x:auto}
+  .ds-bar a{padding:.5rem .7rem}
+}

@@ -1,0 +1,46 @@
+/* Design chooser page */
+:root{
+  --bg:#F4F3EF; --panel:#FFFFFF; --ink:#18191B; --muted:#6B6D75; --line:#E2E0D8; --accent:#4F52B2;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#121315; --panel:#1B1C20; --ink:#F1F0EC; --muted:#9A9CA5; --line:#2B2D33; --accent:#FF6B2C}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+
+/* header */
+.top{max-width:1240px;width:100%;margin:0 auto;padding:3.5rem 2rem 2.5rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:2.2rem}
+.brand .mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.75rem}
+.top h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.top p{color:var(--muted);font-size:1.05rem;margin-top:.8rem;max-width:560px;line-height:1.6}
+
+/* option cards */
+.options{max-width:1240px;width:100%;margin:0 auto;padding:0 2rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;flex:1}
+.option{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+.option:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.12);border-color:var(--accent)}
+.option:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* live, scaled-down preview of each design (1280px wide rendered at 25%) */
+.preview{position:relative;height:240px;overflow:hidden;border-bottom:1px solid var(--line);background:#F6F5F1}
+.preview-dark{background:#131417}
+.preview iframe{position:absolute;top:0;left:0;width:1280px;height:960px;border:0;transform:scale(.3);transform-origin:0 0;pointer-events:none}
+
+.info{padding:1.5rem 1.6rem 1.7rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.num{font-size:.78rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.info h2{font-size:1.35rem;font-weight:800}
+.info p{font-size:.9rem;color:var(--muted);line-height:1.6;flex:1}
+.swatches{display:flex;gap:.4rem;margin-top:.4rem}
+.swatches i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line)}
+.go{margin-top:.8rem;font-weight:700;font-size:.92rem;color:var(--accent)}
+
+.foot{text-align:center;padding:2rem;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+
+@media (max-width:1000px){
+  .options{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .top{padding:2.5rem 1rem 1.5rem}
+  .top h1{font-size:1.9rem}
+  .options{grid-template-columns:1fr;padding:0 1rem 3rem}
+}
